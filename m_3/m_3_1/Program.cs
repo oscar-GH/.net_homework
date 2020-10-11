@@ -14,6 +14,48 @@ namespace m_3_1
     {
         static void Main(string[] args)
         {
+
+            // OrderDetails od1(1,p1,11,2);
+            OrderDetails p1 = new OrderDetails(1, "p1", 10, 2);
+            OrderDetails p2 = new OrderDetails(2, "p2", 20, 1);
+
+            List<OrderDetails> Dlist1 = new List<OrderDetails>();
+            Dlist1.Add(p1);
+            Dlist1.Add(p2);
+            
+            Order order1 = new Order(1, "c1", 0, Dlist1);
+            
+            List<Order> Olist1 = new List<Order>();
+            Olist1.Add(order1);
+            
+            OrderService OS1 = new OrderService(Olist1);
+
+            string s1=OS1.OrderList[0].ToString();
+            Console.WriteLine(s1);
+            Console.WriteLine(OS1.OrderList[0].DetailList[1].ToString());
+            
+            OS1.Sort_OrderId();
+
+            OrderDetails p3 = new OrderDetails(3, "p3", 30, 3);
+            OS1.AddToOrder(order1, p3);
+            OS1.AddToOrder(order1, p3);
+            
+            OS1.Print();
+
+            OS1.DeleteFromOrder(order1, p3);
+            OS1.Print();
+
+            OS1.ModifyDetail(order1, "co1", "-1", -1, -1);
+            Console.WriteLine(OS1.OrderList[0].ToString());
+
+
+            Console.WriteLine(OS1.QueryOrder_Equal(1, "-1", -1)[0].ToString());
+
+            OS1.Sort_OrderId();
+
+            Console.WriteLine("1");
+
+
         }
 
        [Serializable]
@@ -45,7 +87,14 @@ namespace m_3_1
             private List<OrderDetails> detailList;
             public List<OrderDetails> DetailList
             {
-                get;set;
+                get
+                {
+                    return this.detailList;
+                }
+                set
+                {
+                    this.detailList = value;
+                }
             }
             public override bool Equals(object obj)
             {
@@ -75,6 +124,9 @@ namespace m_3_1
                 //return base.ToString();
                 return "订单号:" + order_id + " - 客户:" + customer + " - 总金额:" + total_price;
             }
+
+
+
 
 
         }
@@ -213,7 +265,11 @@ namespace m_3_1
                     {
                         if (OD.Equals(orderDetails)) { belongsTo = true; }
                     }
-                    if (belongsTo) { Console.WriteLine("成功删除"); }
+                    if (belongsTo) 
+                    {
+                        order.DetailList.Remove(orderDetails);
+                        Console.WriteLine("成功删除"); 
+                    }
                     else { Console.WriteLine("删除失败：该商品不属于此订单"); }
                 }
                 else { Console.WriteLine("不存在此订单"); }
@@ -236,9 +292,10 @@ namespace m_3_1
 
                     }
 
-                    bool isDone = false;
+                    
                     if (Pname != "-1" && Pid != -1 && quantity != -1)
                     {
+                        bool isDone = false;
                         foreach (OrderDetails OD in order.DetailList)
                         {
                             if (OD.PName == Pname && OD.PID == Pid)
@@ -248,11 +305,12 @@ namespace m_3_1
 
                             }
                         }
+                        if (isDone) { Console.WriteLine("成功修改商品数量"); }
+                        else { Console.WriteLine("订单中没有此商品"); }
 
                     }
 
-                    if (isDone) { Console.WriteLine("成功修改商品数量"); }
-                    else { Console.WriteLine("订单中没有此商品"); }
+                    
                 }
                 else { Console.WriteLine("不存在此订单"); }
 
@@ -347,6 +405,17 @@ namespace m_3_1
                 foreach(var x in op)
                 {
                     Console.WriteLine(x);
+                }
+            }
+
+            public void Print()
+            {
+                foreach(var x in this.OrderList)
+                {
+                    foreach(var y in x.DetailList)
+                    {
+                        Console.WriteLine(y.ToString());
+                    }
                 }
             }
 

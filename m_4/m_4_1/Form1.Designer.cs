@@ -1,6 +1,6 @@
 ﻿namespace m_4_1
 {
-    partial class Form1
+    partial class Form4_1
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -189,7 +189,7 @@
             this.comboBox_penColor.Size = new System.Drawing.Size(121, 23);
             this.comboBox_penColor.TabIndex = 14;
             // 
-            // Form1
+            // Form4_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,8 +209,8 @@
             this.Controls.Add(this.label_leng);
             this.Controls.Add(this.label_n);
             this.Controls.Add(this.button_op);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Form4_1";
+            this.Text = "Form4_1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
