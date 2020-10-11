@@ -12,42 +12,40 @@ namespace m_4_2
     [Serializable]
     public class Order
     {
-        private int order_id;
+        //private int order_id;
         public int Order_ID
         {
-            get
-            {
-                return order_id;
-            }
-            set
-            {
-                order_id = value;
-            }
+            get;
+            set;
         }
-        private string customer;
+        //private string customer;
         public string Customer
         {
-            get { return customer; }
-            set { customer = value; }
+            get;
+            set;
         }
-        private int total_price;
+        //private int total_price;
         public int Total_Price
         {
-            get { return total_price; }
-            set { total_price = value; }
+            get;
+            set;
         }
-        private List<OrderDetails> detailList;
-        public List<OrderDetails> DetailList
+       // private List<OrderDetails> detailList;
+        public List<OrderDetails> detailList
         {
-            get
-            {
-                return this.detailList;
-            }
-            set
-            {
-                this.detailList = value;
-            }
+            get;
+            set;
         }
+        //{
+        //    get
+        //    {
+        //        return this.detaillist;
+        //    }
+        //    set
+        //    {
+        //        this.detaillist = value;
+        //    }
+        //}
         public override bool Equals(object obj)
         {
             //return base.Equals(obj);
@@ -57,24 +55,24 @@ namespace m_4_2
             if ((obj.GetType().Equals(this.GetType())) == false) { return false; }
             Order temp = null;
             temp = (Order)obj;
-            return this.order_id.Equals(temp.order_id) && this.customer.Equals(temp.customer) && this.total_price.Equals(temp.total_price);
+            return this.Order_ID.Equals(temp.Order_ID) && this.Customer.Equals(temp.Customer) && this.Total_Price.Equals(temp.Total_Price);
         }
         public override int GetHashCode()
         {
             //return base.GetHashCode();
-            return this.order_id.GetHashCode() + this.customer.GetHashCode() + this.total_price.GetHashCode();
+            return this.Order_ID.GetHashCode() + this.Customer.GetHashCode() + this.Total_Price.GetHashCode();
         }
         public Order(int id_o, string customer_o, int price_o, List<OrderDetails> DList)
         {
-            order_id = id_o;
-            customer = customer_o;
-            total_price = price_o;
+            Order_ID = id_o;
+            Customer = customer_o;
+            Total_Price = price_o;
             detailList = DList;
         }
         public override string ToString()
         {
             //return base.ToString();
-            return "订单号:" + order_id + " - 客户:" + customer + " - 总金额:" + total_price;
+            return "订单号:" + Order_ID + " - 客户:" + Customer + " - 总金额:" + Total_Price;
         }
 
 

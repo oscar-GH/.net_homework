@@ -11,23 +11,17 @@ namespace m_4_2
 {
    public class OrderDetails
     {
-        private int pid;//Product Id
+        //private int pid;//Product Id
         public int PID
         {
-            get
-            {
-                return pid;
-            }
-            set
-            {
-                pid = value;
-            }
+            get;
+            set;
         }
-        private string Pname;//Product name
+       // private string Pname;//Product name
         public string PName
         {
-            get { return Pname; }
-            set { Pname = value; }
+            get;
+            set;
         }
 
         //客户
@@ -39,21 +33,21 @@ namespace m_4_2
         //    set { customer = value; }
         //}
 
-        private int price;//单价
+       // private int price;//单价
         public int Price
         {
-            get { return price; }
-            set { price = value; }
+            get;
+            set;
         }
-        private int quantity;//数量
+        //private int quantity;//数量
         public int Quantity
         {
-            get { return quantity; }
-            set { quantity = value; }
+            get;
+            set;
         }
         public int Total_Price_Detail
         {
-            get { return price * quantity; }
+            get { return Price * Quantity; }
         }//该类商品总价
         public override bool Equals(object obj)
         {
@@ -62,25 +56,25 @@ namespace m_4_2
             if ((obj.GetType().Equals(this.GetType())) == false) { return false; }
             OrderDetails temp = null;
             temp = (OrderDetails)obj;
-            return this.pid.Equals(temp.pid) && this.Pname.Equals(temp.Pname) && this.price.Equals(temp.price) && this.quantity.Equals(temp.quantity);
+            return this.PID.Equals(temp.PID) && this.PName.Equals(temp.PName) && this.Price.Equals(temp.Price) && this.Quantity.Equals(temp.Quantity);
 
         }
         public override int GetHashCode()
         {
             //return base.GetHashCode();
-            return this.pid.GetHashCode() + this.Pname.GetHashCode() + this.price.GetHashCode() + this.quantity.GetHashCode();
+            return this.PID.GetHashCode() + this.PName.GetHashCode() + this.Price.GetHashCode() + this.Quantity.GetHashCode();
         }
         public OrderDetails(int id_p, string name_p, int price_p, int quantity_p)
         {
-            pid = id_p;
-            Pname = name_p;
-            price = price_p;
-            quantity = quantity_p;
+            PID = id_p;
+            PName = name_p;
+            Price = price_p;
+            Quantity = quantity_p;
         }
         public override string ToString()
         {
             //return base.ToString();
-            return "商品ID:" + pid + " - 商品名:" + Pname + " - 单价:" + price + " - 数量:" + quantity + " - 总价:" + Total_Price_Detail;
+            return "商品ID:" + PID + " - 商品名:" + PName + " - 单价:" + Price + " - 数量:" + Quantity + " - 总价:" + Total_Price_Detail;
         }
     }
 }

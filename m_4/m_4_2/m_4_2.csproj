@@ -72,6 +72,9 @@
     <None Include="Properties\DataSources\Form4_2.datasource" />
     <None Include="Properties\DataSources\m_4_2.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\m_4_2.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Order.datasource" />
+    <None Include="Properties\DataSources\OrderDetails.datasource" />
+    <None Include="Properties\DataSources\OrderService.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

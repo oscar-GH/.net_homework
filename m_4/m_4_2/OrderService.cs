@@ -11,16 +11,16 @@ namespace m_4_2
 {
     public class OrderService
     {
-        private List<Order> orderList;
+        //private List<Order> orderList;
         public List<Order> OrderList
         {
-            get { return orderList; }
-            set { orderList = value; }
+            get;
+            set;
         }
 
         public OrderService(List<Order> OL)
         {
-            orderList = OL;
+            OrderList = OL;
         }
 
         public void AddToOrder(Order order, OrderDetails orderDetails)
@@ -34,13 +34,13 @@ namespace m_4_2
             if (isOrderExist)
             {
                 bool first_time = true;
-                foreach (OrderDetails OD in order.DetailList)
+                foreach (OrderDetails OD in order.detailList)
                 {
                     if (OD.Equals(orderDetails)) { first_time = false; }
                 }
                 if (first_time)
                 {
-                    order.DetailList.Add(orderDetails);
+                    order.detailList.Add(orderDetails);
                     Console.WriteLine("添加成功");
                 }
                 else { Console.WriteLine("此订单已有该商品"); }
@@ -60,13 +60,13 @@ namespace m_4_2
             if (isOrderExist)
             {
                 bool belongsTo = false;
-                foreach (OrderDetails OD in order.DetailList)
+                foreach (OrderDetails OD in order.detailList)
                 {
                     if (OD.Equals(orderDetails)) { belongsTo = true; }
                 }
                 if (belongsTo)
                 {
-                    order.DetailList.Remove(orderDetails);
+                    order.detailList.Remove(orderDetails);
                     Console.WriteLine("成功删除");
                 }
                 else { Console.WriteLine("删除失败：该商品不属于此订单"); }
@@ -95,7 +95,7 @@ namespace m_4_2
                 if (Pname != "-1" && Pid != -1 && quantity != -1)
                 {
                     bool isDone = false;
-                    foreach (OrderDetails OD in order.DetailList)
+                    foreach (OrderDetails OD in order.detailList)
                     {
                         if (OD.PName == Pname && OD.PID == Pid)
                         {
@@ -211,7 +211,7 @@ namespace m_4_2
         {
             foreach (var x in this.OrderList)
             {
-                foreach (var y in x.DetailList)
+                foreach (var y in x.detailList)
                 {
                     Console.WriteLine(y.ToString());
                 }
