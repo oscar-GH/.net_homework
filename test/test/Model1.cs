@@ -23,6 +23,7 @@
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
 
+
         public class Blog
         {
             public int BlogId { get; set; }
